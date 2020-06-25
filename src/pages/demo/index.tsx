@@ -1,10 +1,9 @@
 import  React from 'react';
 
-import * as actions from './redux/actions';
-import { IStoreState } from "./redux/types";
+import * as actions from '../../redux/actions';
+import { IStoreState } from "../../redux/types";
 import { connect } from 'react-redux';
 import { Button } from 'antd';
-import './App.less';
 
 export interface IProps {
   name: string;
@@ -14,16 +13,13 @@ export interface IProps {
 }
 
 
-class App extends React.Component<IProps,any> {
-
-  
+class Demo extends React.Component<IProps,any> {
 
   public render() {
     const { name, enthusiasmLevel, onIncrement, onDecrement } = this.props;
     return (
       <div className="App">
         <Button type="primary" className="button">按钮</Button>
-    
         <p>Hello React TypeScript</p>
         <div>
           <p>{name}</p>
@@ -50,5 +46,6 @@ export function mapDispatchToProps(dispatch:any) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Demo);
+
 
