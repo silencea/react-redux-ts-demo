@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import  React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import * as actions from './redux/actions';
+import { IStoreState } from "./redux/types";
+import { connect } from 'react-redux';
+import { Button } from 'antd';
+import './App.less';
+
+export interface IProps {
+  name: string;
+  enthusiasmLevel?: number;
+  onIncrement?: () => void;
+  onDecrement?: () => void;
 }
 
-export default App;
+
+class App extends React.Component<IProps,any> {
+
+  
+
+  public render() {
+    const { name, enthusiasmLevel, onIncrement, onDecrement } = this.props;
+    return (
+      <div className="App">
+        <Button type="primary" className="button">按钮</Button>
+    
+        <p>Hello React TypeScript</p>
+        <div>
+          <p>{name}</p>
+          <p>{enthusiasmLevel}</p>
+          <button onClick={onDecrement}>-</button>
+          <button onClick={onIncrement}>+</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+export function mapStateToProps({ enthusiasmLevel, languageName }: IStoreState) {
+  return {
+    enthusiasmLevel,
+    name: languageName,
+  }
+}
+
+export function mapDispatchToProps(dispatch:any) {
+  return {
+    onDecrement: () => dispatch(actions.decrementEnthusiasm()),
+    onIncrement: () => dispatch(actions.incrementEnthusiasm())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
