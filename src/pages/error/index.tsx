@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import img from '../../components/styles/image/404.png';
-import './notFound.less';
+import img from '../../assets/images/404.png';
+import './index.less';
 
 export default class NotFound extends Component {
 
