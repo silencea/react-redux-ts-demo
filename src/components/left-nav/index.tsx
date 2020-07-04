@@ -2,7 +2,7 @@ import React from 'react'
 import routes from '../../config/menuConfig'
 import { Link } from 'react-router-dom'
 import { Menu } from 'antd';
-import logo from '../../assets/images/top.jpg'
+import logo from '../../assets/images/logo.jpeg'
 import './index.less';
 
 function renderLinkMenu(menu: any) {
