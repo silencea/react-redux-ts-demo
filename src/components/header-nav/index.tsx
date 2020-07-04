@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './index.less';
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 import { formateDate } from '../../utils/dateUtils';
 import whetherImg from '../../assets/images/qing.png';
 import LinkButton from '../link-button';
@@ -10,7 +10,7 @@ const logout = () => {
     Modal.confirm({
         content: '确定退出吗?',
         onOk: () => {
-            alert("功能暂没有实现");
+            message.warn("功能暂没有实现");
         }
     })
 }
